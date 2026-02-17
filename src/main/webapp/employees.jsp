@@ -9,6 +9,8 @@
             <title>Employees - RBAC Demo</title>
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
             <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+                rel="stylesheet">
             <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">
         </head>
 
@@ -141,13 +143,22 @@
                                             required minlength="6">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="roleIds" class="form-label">Assign Roles</label>
-                                        <select class="form-select" id="roleIds" name="roleIds" multiple size="4">
+                                        <label class="form-label">Assign Roles</label>
+                                        <div class="role-checkbox-group">
                                             <c:forEach var="role" items="${allRoles}">
-                                                <option value="${role.id}">${role.name}</option>
+                                                <label class="role-checkbox-card">
+                                                    <input type="checkbox" name="roleIds" value="${role.id}">
+                                                    <span class="role-checkbox-indicator">
+                                                        <i class="bi bi-check-lg"></i>
+                                                    </span>
+                                                    <span class="role-checkbox-label">
+                                                        <span class="role-checkbox-name">${role.name}</span>
+                                                        <span class="role-checkbox-desc">${role.description}</span>
+                                                    </span>
+                                                </label>
                                             </c:forEach>
-                                        </select>
-                                        <div class="form-text">Hold Ctrl to select multiple roles.</div>
+                                        </div>
+                                        <div class="form-text">Select one or more roles.</div>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
